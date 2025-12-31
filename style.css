@@ -128,4 +128,69 @@ body {
 @media (max-width: 900px) {
     .grid-container { grid-template-columns: 1fr; }
     .giant-text { font-size: 2.5rem; }
+
+}
+
+/* Update the body to allow scrolling when needed */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;   /* Allow vertical scroll */
+    transition: background 1s ease;
+}
+
+/* Update the phase class */
+.phase {
+    display: none;
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    min-height: 100vh; /* Use min-height instead of height */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;
+    padding: 20px; /* Add padding so content doesn't touch edges */
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable internal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+}
+
+/* Ensure the grid layout doesn't trap the scroll */
+.grid-layout { 
+    width: 100%; 
+    padding: 20px 0; 
+}
+
+/* Adjust gallery row for mobile so images don't stack awkwardly */
+.gallery-row { 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    margin-top: 30px; 
+    flex-wrap: wrap; /* Already there, but essential */
+}
+
+/* Make images responsive on mobile */
+.gallery-row img { 
+    width: 90%; /* On mobile, take full width */
+    max-width: 280px; 
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px; 
+}
+
+/* Fix for centered content in long phases */
+.phase.active { 
+    display: flex !important; 
+    /* If content is taller than screen, start from top */
+    justify-content: flex-start; 
+    padding-top: 60px; 
+}
+
+/* Phase 1-5 usually fit in one screen, we can keep them centered */
+#phase1.active, #phase2.active, #phase3.active, #phase4.active, #phase5.active {
+    justify-content: center;
+    padding-top: 0;
 }
