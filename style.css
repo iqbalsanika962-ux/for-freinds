@@ -11,23 +11,37 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: var(--dark);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     transition: background 1s ease;
 }
 
 /* THE CENTERING FIX */
 .phase {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    width: 100%; 
+    min-height: 100vh;
     flex-direction: column;
-    justify-content: center; /* Vertical Center */
-    align-items: center;     /* Horizontal Center */
+    justify-content: center; 
+    align-items: center;     
     text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .phase.active { display: flex !important; animation: fadeIn 0.8s forwards; }
+
+/* Centering overrides for specific phases */
+#phase1.active, #phase2.active, #phase3.active, #phase4.active, #phase5.active, #phase8.active {
+    justify-content: center;
+}
+
+#phase6.active, #phase7.active {
+    justify-content: flex-start;
+    padding-top: 60px;
+}
 
 .center-content {
     display: flex;
@@ -38,10 +52,8 @@ body {
     z-index: 10;
 }
 
-/* Backgrounds */
 .bg-cream { background: var(--cream) !important; color: #222; }
 
-/* Fireworks Layer */
 #fireworksCanvas {
     position: absolute; top: 0; left: 0; z-index: 1;
 }
@@ -64,7 +76,7 @@ body {
 
 /* Texts */
 .giant-text { font-size: 5rem; margin-bottom: 20px; }
-.hny-text { font-size: 4.5rem; color: var(--gold); text-shadow: 0 10px 30px rgba(255,184,0,0.4); }
+.hny-text { font-size: 4.5rem; color: var(--gold); text-shadow: 0 10px 30px rgba(255,184,0,0.4); line-height: 1.2; }
 
 /* Mega Box */
 .mega-box {
@@ -81,7 +93,7 @@ body {
 .circle-vid video { width: 100%; height: 100%; object-fit: cover; }
 
 /* Friend Cards */
-.grid-layout { width: 100%; overflow-y: auto; padding: 50px 0; }
+.grid-layout { width: 100%; padding: 20px 0; }
 .grid-container {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
     max-width: 1200px; margin: 0 auto; padding: 20px;
@@ -97,11 +109,25 @@ body {
 
 /* Gallery */
 .gallery-row { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
-.gallery-row img { width: 280px; height: 400px; border-radius: 20px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.gallery-row img { width: 90%; max-width: 280px; height: auto; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-/* Envelope */
-.envelope-wrapper { cursor: pointer; perspective: 1000px; }
-.envelope { position: relative; width: 400px; height: 250px; background: #c33; transition: 0.5s; }
+/* Envelope Responsive Fixes */
+.envelope-wrapper { 
+    cursor: pointer; 
+    perspective: 1000px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    margin-top: 50px; /* Space for the letter to pop up */
+}
+.envelope { 
+    position: relative; 
+    width: 400px; 
+    height: 250px; 
+    background: #c33; 
+    transition: 0.5s; 
+}
 .envelope.open .top-flap { transform: rotateX(180deg); z-index: 0; }
 .envelope.open .letter { transform: translateY(-130px); }
 .top-flap {
@@ -112,6 +138,8 @@ body {
 .letter {
     position: absolute; bottom: 10px; left: 10px; width: 380px; height: 230px;
     background: white; padding: 20px; z-index: 1; transition: 0.5s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: flex; flex-direction: column; justify-content: center;
 }
 
 /* Music */
@@ -125,72 +153,18 @@ body {
 .hidden { display: none; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+/* Responsive Adjustments */
 @media (max-width: 900px) {
     .grid-container { grid-template-columns: 1fr; }
     .giant-text { font-size: 2.5rem; }
-
+    .hny-text { font-size: 2.2rem; padding: 0 10px; } /* Smaller text for mobile */
+    
+    /* Shrink the envelope to fit mobile screens */
+    .envelope-wrapper { transform: scale(0.8); }
 }
 
-/* Update the body to allow scrolling when needed */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--dark);
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    overflow-y: auto;   /* Allow vertical scroll */
-    transition: background 1s ease;
-}
-
-/* Update the phase class */
-.phase {
-    display: none;
-    position: absolute; /* Changed from fixed to absolute */
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    min-height: 100vh; /* Use min-height instead of height */
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;     
-    text-align: center;
-    padding: 20px; /* Add padding so content doesn't touch edges */
-    box-sizing: border-box;
-    overflow-y: auto; /* Enable internal scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
-}
-
-/* Ensure the grid layout doesn't trap the scroll */
-.grid-layout { 
-    width: 100%; 
-    padding: 20px 0; 
-}
-
-/* Adjust gallery row for mobile so images don't stack awkwardly */
-.gallery-row { 
-    display: flex; 
-    gap: 20px; 
-    justify-content: center; 
-    margin-top: 30px; 
-    flex-wrap: wrap; /* Already there, but essential */
-}
-
-/* Make images responsive on mobile */
-.gallery-row img { 
-    width: 90%; /* On mobile, take full width */
-    max-width: 280px; 
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 20px; 
-}
-
-/* Fix for centered content in long phases */
-.phase.active { 
-    display: flex !important; 
-    /* If content is taller than screen, start from top */
-    justify-content: flex-start; 
-    padding-top: 60px; 
-}
-
-/* Phase 1-5 usually fit in one screen, we can keep them centered */
-#phase1.active, #phase2.active, #phase3.active, #phase4.active, #phase5.active {
-    justify-content: center;
-    padding-top: 0;
+@media (max-width: 450px) {
+    .hny-text { font-size: 1.8rem; }
+    .envelope-wrapper { transform: scale(0.65); } /* Further shrink for very small phones */
+    .btn-xl { padding: 15px 40px; font-size: 1.5rem; }
 }
