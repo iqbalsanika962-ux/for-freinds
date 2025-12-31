@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Daim Khan",
+        "cover": "assets/cover1.jpg",
+        "pics": ["assets/d1.jpg", "assets/d2.jpg", "assets/d3.jpg"],
+        "blessing": "Wishing you a year full of prosperity and health!"
+    },
+    {
+        "name": "Toheed Ahmad",
+        "cover": "assets/cover2.jpg",
+        "pics": ["assets/t1.jpg", "assets/t2.jpg", "assets/t3.jpg"],
+        "blessing": "May your hard work pay off in 2026!"
+    },
+    {
+        "name": "Ukasha Malik",
+        "cover": "assets/cover3.jpg",
+        "pics": ["assets/u1.jpg", "assets/u2.jpg", "assets/u3.jpg"],
+        "blessing": "Stay blessed and stay happy!"
+    },
+    {
+        "name": "Aliyan Bhatti",
+        "cover": "assets/cover4.jpg",
+        "pics": ["assets/a1.jpg", "assets/a2.jpg", "assets/a3.jpg"],
+        "blessing": "New year, new goals, new success!"
+    },
+    {
+        "name": "Bilal Akram",
+        "cover": "assets/cover5.jpg",
+        "pics": ["assets/b1.jpg", "assets/b2.jpg", "assets/b3.jpg"],
+        "blessing": "May God shower His blessings upon you."
+    },
+    {
+        "name": "Faizan Pervaiz",
+        "cover": "assets/cover6.jpg",
+        "pics": ["assets/f1.jpg", "assets/f2.jpg", "assets/f3.jpg"],
+        "blessing": "A great year is waiting for you!"
+    }
+]

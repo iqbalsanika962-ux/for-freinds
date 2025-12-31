@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Surprise 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Persistent Music Button -->
+    <div id="music-control" class="music-btn" onclick="toggleMusic()">
+        <span id="music-icon">▶</span>
+        <audio id="bg-music" loop>
+            <source src="assets/music/bg-music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Phase 1: Fireworks & Start -->
+    <section id="phase1" class="phase active">
+        <canvas id="fireworksCanvas"></canvas>
+        <div class="center-content">
+            <button class="btn btn-xl btn-gold" onclick="goToPhase(2)">Start Surprise</button>
+        </div>
+    </section>
+
+    <!-- Phase 2: Dectators -->
+    <section id="phase2" class="phase">
+        <div class="center-content">
+            <h1 class="giant-text">This Is For Dectators 😈</h1>
+            <button class="btn btn-lg btn-dark" onclick="goToPhase(3)">Next</button>
+        </div>
+    </section>
+
+    <!-- Phase 3: The Question -->
+    <section id="phase3" class="phase">
+        <div class="mega-box shadow-gold">
+            <div class="circle-vid">
+                <video autoplay muted loop playsinline><source src="assets/video/1.mp4" type="video/mp4"></video>
+            </div>
+            <h2>Would you like to go forward? 🚀✨</h2>
+            <div class="btn-group">
+                <button class="btn btn-lg btn-yes" onclick="goToPhase(5)">Yes, Let's go!</button>
+                <button class="btn btn-lg btn-no" onclick="goToPhase(4)">No</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 4: How Dare You -->
+    <section id="phase4" class="phase">
+        <div class="mega-box shadow-red">
+            <div class="circle-vid">
+                <video autoplay muted loop playsinline><source src="assets/video/2.mp4" type="video/mp4"></video>
+            </div>
+            <h2>How dare you to do that? 😠🔥</h2>
+            <button class="btn btn-lg btn-dark" onclick="goToPhase(3)">Go Back</button>
+        </div>
+    </section>
+
+    <!-- Phase 5: Happy New Year Message -->
+    <section id="phase5" class="phase">
+        <div class="center-content">
+            <h1 class="hny-text">Happy New Year My Friend</h1>
+            <button id="hny-next-btn" class="btn btn-lg btn-gold hidden" onclick="goToPhase(6)">See My Friends</button>
+        </div>
+    </section>
+
+    <!-- Phase 6: Friends Grid -->
+    <section id="phase6" class="phase">
+        <div class="grid-layout">
+            <h1 class="title">My Special People</h1>
+            <div id="friends-grid" class="grid-container"></div>
+        </div>
+    </section>
+
+    <!-- Phase 7: Individual Gallery -->
+    <section id="phase7" class="phase">
+        <div id="gallery-target" class="center-content"></div>
+        <button class="btn btn-lg btn-msg" onclick="goToPhase(8)">Message For You</button>
+    </section>
+
+    <!-- Phase 8: Envelope -->
+    <section id="phase8" class="phase">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="envelope">
+                <div class="front"></div>
+                <div class="top-flap"></div>
+                <div class="letter">
+                    <p>Wishing you a year full of joy, success, and endless memories. Stay blessed!</p>
+                    <p><strong>- From Ali Ahmad</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
