@@ -77,7 +77,10 @@
     <!-- Phase 7: Individual Gallery -->
     <section id="phase7" class="phase">
         <div id="gallery-target" class="center-content"></div>
-        <button class="btn btn-lg btn-msg" onclick="goToPhase(8)">Message For You</button>
+        <div class="btn-group">
+            <button class="btn btn-lg btn-dark" onclick="goToPhase(6)">Back</button>
+            <button class="btn btn-lg btn-msg" onclick="goToPhase(8)">Message For You</button>
+        </div>
     </section>
 
     <!-- Phase 8: Envelope -->
@@ -92,9 +95,9 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-lg btn-dark" style="margin-top: 50px;" onclick="goToPhase(6)">Back to Friends</button>
     </section>
 
     <script src="script.js"></script>
 </body>
-
 </html>
